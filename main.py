@@ -36,7 +36,7 @@ async def generate_recipe(ingredients: list):
         if response.status_code == 200:
             # Get the generated text from the response
             recipe = response.json()["choices"][0]["text"].strip()
-            return {"recipe": recipe}
+            return {"recipe ": recipe}
         else:
             raise HTTPException(status_code=500, detail="Failed to generate recipe")
     except Exception as e:
