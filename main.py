@@ -1,5 +1,4 @@
 from fastapi import FastAPI, HTTPException
-import openai
 import requests
 
 app = FastAPI()
@@ -28,9 +27,11 @@ async def generate_recipe(ingredients: list):
             "Authorization": f"Bearer {api_key}"
         }
 
-        print(prompt)
+        print("Request Data:", params)  # Debugging
 
         response = requests.post("https://api.openai.com/v1/completions", json=params, headers=headers)
+
+        print("Response Status Code:", response.status_code)  # Debugging
 
         # Check if the request was successful
         if response.status_code == 200:
@@ -41,7 +42,7 @@ async def generate_recipe(ingredients: list):
             raise HTTPException(status_code=500, detail="Failed to generate recipe")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-        
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
