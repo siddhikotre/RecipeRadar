@@ -1,10 +1,11 @@
 from fastapi import FastAPI, HTTPException
 import requests
+from openai import OpenAI
 
 app = FastAPI()
 
 # Set your OpenAI API key
-api_key = "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"
+api_key = "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"
 
 @app.post("/generate_recipe")
 async def generate_recipe(ingredients: list):
@@ -15,31 +16,21 @@ async def generate_recipe(ingredients: list):
     # Generate recipe using OpenAI's API
     prompt = "Generate a recipe using the following ingredients: " + ", ".join(ingredients)
     try:
-        # Define parameters
-        params = {
-            "prompt": prompt,
-            "max_tokens": 200
-        }
+        client = OpenAI(api_key = api_key)
+        response = client.chat.completions.create(
+            model = "gpt-3.5-turbo", 
+            messages = [
+                {
+                    "role" : "user",
+                    "content" : prompt
+                },
+            ],
+        )
+        
+        # Get the generated text from the response
+        recipe = response.choices[0].message.content
+        return {"Recipe": recipe}
 
-        # Make a POST request to the OpenAI API
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {api_key}"
-        }
-
-        print("Request Data:", params)  # Debugging
-
-        response = requests.post("https://api.openai.com/v1/completions", json=params, headers=headers)
-
-        print("Response Status Code:", response.status_code)  # Debugging
-
-        # Check if the request was successful
-        if response.status_code == 200:
-            # Get the generated text from the response
-            recipe = response.json()["choices"][0]["text"].strip()
-            return {"Recipe": recipe}
-        else:
-            raise HTTPException(status_code=500, detail="Failed to generate recipe")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
