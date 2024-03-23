@@ -29,7 +29,7 @@ async def generate_recipe(ingredients: list):
         
         # Get the generated text from the response
         recipe = response.choices[0].message.content
-        return {"Recipe": recipe}
+        return {"Recipe ": recipe}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
