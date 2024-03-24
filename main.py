@@ -14,7 +14,7 @@ async def generate_recipe(ingredients: list):
         raise HTTPException(status_code=400, detail="Please provide a list of ingredients")
 
     # Generate recipe using OpenAI's API
-    prompt = "Generate a recipe using the following ingredients: " + ", ".join(ingredients)
+    prompt = "Generate a recipe using the following ingredients(recipe): " + ", ".join(ingredients)
     try:
         client = OpenAI(api_key = api_key)
         response = client.chat.completions.create(
@@ -29,7 +29,7 @@ async def generate_recipe(ingredients: list):
         
         # Get the generated text from the response
         recipe = response.choices[0].message.content
-        return {"Recipe ": recipe}
+        return {"Recipe " : recipe}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
