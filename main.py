@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 import requests
 from openai import OpenAI
 
+#RecipeRadar --Author Siddhi Kotre--
 app = FastAPI()
 
 # Set your OpenAI API key
@@ -12,6 +13,7 @@ async def generate_recipe(ingredients: list):
     # Check if ingredients are provided
     if not ingredients:
         raise HTTPException(status_code=400, detail="Please provide a list of ingredients")
+
 
     # Generate recipe using OpenAI's API
     prompt = "Generate a recipe using the following ingredients(recipe):" + ", ".join(ingredients)
