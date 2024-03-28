@@ -29,7 +29,7 @@ async def generate_recipe(ingredients: list):
             ],
         )
         
-# Get the generated text from the response
+#Get the generated text from the responses
         recipe = response.choices[0].message.content
         return {"Recipe" : recipe}
 
