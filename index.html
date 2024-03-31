@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommendation System</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="flex flex-col md:flex-row">
+        <!-- Navigation Sidebar -->
+        <div class="bg-gradient-to-r from-indigo-500 to-blue-400 text-white py-4 px-6 h-screen w-full md:w-64">
+            <h2 class="text-3xl font-semibold mb-4">Recipe Radar</h2>
+            <ul>
+                <li class="mb-4">
+                    <a href="#" class="flex items-center hover:text-gray-100">
+                        <i class="fas fa-home mr-2"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="flex items-center hover:text-gray-100">
+                        <i class="fas fa-utensils mr-2"></i>
+                        <span>Recipes</span>
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="flex items-center hover:text-gray-100">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        <span>About Us</span>
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="#" class="flex items-center hover:text-gray-100">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="w-full md:w-auto px-4 py-8">
+            <div class="container mx-auto">
+                <h1 class="text-3xl font-semibold mb-6">Recipe Recommendations</h1>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Recipe Card 1 -->
+                    <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://via.placeholder.com/300" alt="Recipe 1" class="w-full h-48 object-cover mb-4">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Recipe Name</div>
+                            <p class="text-gray-600 text-base">Description of the recipe goes here. You can provide a brief overview of the recipe.</p>
+                        </div>
+                    </div>
+
+                    <!-- Recipe Card 2 -->
+                    <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://via.placeholder.com/300" alt="Recipe 2" class="w-full h-48 object-cover mb-4">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Recipe Name</div>
+                            <p class="text-gray-600 text-base">Description of the recipe goes here. You can provide a brief overview of the recipe.</p>
+                        </div>
+                    </div>
+
+                    <!-- Recipe Card 3 -->
+                    <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://via.placeholder.com/300" alt="Recipe 3" class="w-full h-48 object-cover mb-4">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Recipe Name</div>
+                            <p class="text-gray-600 text-base">Description of the recipe goes here. You can provide a brief overview of the recipe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Generator Section -->
+    <div class="container mx-auto mt-8">
+        <div class="flex justify-center">
+            <div class="w-full md:w-1/2 px-4">
+                <h2 class="text-2xl font-semibold mb-4">Generate Recipe</h2>
+                <textarea id="recipeInput" class="w-full h-32 border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Enter ingredients or recipe details..."></textarea>
+                <button id="generateRecipeBtn" class="bg-gradient-to-r from-indigo-500 to-blue-400 hover:bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-semibold py-2
+                <button id="generateRecipeBtn" class="bg-gradient-to-r from-indigo-500 to-blue-400 hover:bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-semibold py-2 px-4 rounded-md">Generate Recipe</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recipe Display Section -->
+<div class="container mx-auto mt-8">
+    <div class="flex justify-center">
+        <div class="w-full md:w-1/2 px-4">
+            <h2 class="text-2xl font-semibold mb-4">Generated Recipe</h2>
+            <textarea id="recipeOutput" class="w-full h-32 border border-gray-300 rounded-md px-4 py-2 mb-4" readonly></textarea>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript for generating recipe (dummy functionality)
+    document.getElementById('generateRecipeBtn').addEventListener('click', function() {
+        const input = document.getElementById('recipeInput').value;
+        // Dummy recipe generation, replace with actual logic
+        const generatedRecipe = "Dummy Recipe Generated from: " + input;
+        document.getElementById('recipeOutput').value = generatedRecipe;
+    });
+</script>
+</body>
+</html>
